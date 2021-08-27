@@ -1,7 +1,7 @@
 from os import write
 
-zfile = 'participants_Aug_03.csv'
-cfile = 'meeting_saved_chat_Aug_03.txt'
+zfile = 'participants_Jul_20.csv'
+cfile = 'meeting_saved_chat_Jul_20.txt'
 nfile = 'NameList.csv'
 
 zoom_file = open('zoom/' + zfile)
@@ -20,15 +20,20 @@ zoom_file_out = open('zoom/' + zfile,'w')
 chat_file_out = open('zoom/' + cfile,'w')
 name_file_out = open('zoom/' + nfile,'w')
 
+
+# Get name and id number from zoom chat in class
 zoom_dict = dict()
 name_list = []
 email_list = []
 n = 0
 for s in zoom_file:
+    #The first 4 lines are not the participants
     if n < 4:
         n = n+1
         continue
     s = s.strip()
+
+
     #print(s)
     if '(' in s:
         i = s.find('(')
@@ -60,7 +65,10 @@ for s in zoom_file:
 #print('Participants List')
 zoom_record = dict(zip(email_list,name_list))
 #print(zoom_dict)
+print('Zoom record')
 #print(zoom_record)
+for i in zoom_record :
+    print(i, zoom_record[i])
 
 # 0 - not check in yet
 # 1 - checking in
@@ -122,9 +130,11 @@ for s in chat_file:
 #print('Name chat', name_chat)
 #print('id chat', id_chat)
 chat_record = dict(zip(id_chat,name_chat))
-#print('Chat')
-#print(chat_record)
+print('Chat')
+print(chat_record)
 
+
+# Creating a list of id and email
 n = 0
 email_namelist = []
 id_namelist = []
@@ -139,8 +149,8 @@ for s in name_file :
     email_namelist.append(email)
     id_namelist.append(id)
 class_list = dict(zip(id_namelist,email_namelist))
-#print('Name List')
-#print(class_list)
+print('Name List')
+print(class_list)
 
 #print('Checkingxxx')
 
@@ -181,6 +191,9 @@ for s in read_f:
     output[id] = 0
 #print('output : ')
 #print(output)
+print('Output : ')
+print(output)
+
 
 for i in output:
     if i in check_in_list:
@@ -194,6 +207,9 @@ for i in output:
     if i in check_out_list:
         output[i] = output[i] + 1
 
+print('AFter check')
+print(output)
+
 for i in output:
     if output[i] == 2:
         output[i] = 'P'
@@ -201,6 +217,11 @@ for i in output:
         output[i] = 'L'
     else :
         output[i] = 'U'
+
+print(check_in_list)
+print(check_late_list)
+print(check_out_list)
+
 
 #print(output)
 for i in output:
