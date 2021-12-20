@@ -1,8 +1,8 @@
 
 name_list_f = open('zoom/NameList.csv')
-zoom_f = open('zoom/participants_Aug_21.csv')
-meeting_f = open('zoom/meeting_saved_chat_Aug_21.txt')
-output_f = open('zoom/output_Aug_21.txt','w')
+zoom_f = open('zoom/participants_Aug_31.csv')
+meeting_f = open('zoom/meeting_saved_chat_Aug_31.txt')
+output_f = open('zoom/output_Aug_31.txt','w')
 
 email_id_list = dict()
 for name in name_list_f :
